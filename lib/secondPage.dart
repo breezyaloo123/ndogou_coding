@@ -18,6 +18,12 @@ class _SecondPageState extends State<SecondPage> {
   new Questions(tab[4].toString(), true),new Questions(tab[5].toString(), true),
   new Questions(tab[6].toString(), true)];
   var listQuestion;
+
+  static bool answer1= true;
+  static bool answer2 = false;
+
+  var indice = 0;
+  var num= 0;
   
 @override
   void initState() {
@@ -73,7 +79,9 @@ class _SecondPageState extends State<SecondPage> {
               ()
               {
                 setState(() {
+                  num = (num + 1) % tab.length;
                   getQuestions();
+                  checkAnswer(answer1);
                 });
               }),
             ),
@@ -86,7 +94,10 @@ class _SecondPageState extends State<SecondPage> {
                 onPressed: 
               ()
               {
-
+                setState(() {
+                      getQuestions();
+                checkAnswer(answer2);
+                });
               }),
             ),
 
@@ -101,7 +112,22 @@ class _SecondPageState extends State<SecondPage> {
   void getQuestions()
   {
     Random random = new Random();
-    int number = random.nextInt(tab.length);
+    int number = random.nextInt(list.length);
+    indice = number % list.length;
     listQuestion=list[number].questionn;
+  }
+
+  void checkAnswer(final bool answer)
+  {
+    final bool answerquestion = list[indice].answerr;
+    if(answer == answerquestion)
+    {
+      print("Gooooooood");
+      print(list[indice].questionn.toString());
+    }
+    else
+    {
+      print("Baaaaaaaaad");
+    }
   }
 }
