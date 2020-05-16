@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:quizz_covid19/models/Questions.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -6,6 +9,25 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+
+   static var tab =const ["fièvre","toux sèche","fatigue","maux de gorge","diarrhé","difficultés à respirer ou essoufflement",
+  "sensation d’oppression ou douleur au niveau de la poitrine",];
+
+  var list = [new Questions(tab[0].toString(), true),new Questions(tab[1].toString(), true),
+  new Questions(tab[2].toString(), true),new Questions(tab[3].toString(), true),
+  new Questions(tab[4].toString(), true),new Questions(tab[5].toString(), true),
+  new Questions(tab[6].toString(), true)];
+  var listQuestion;
+  
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      getQuestions();
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +56,7 @@ class _SecondPageState extends State<SecondPage> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10,right: 10),
                   child: Center(
-                    child: Text("Le sommeil est un symptome du Covid-19?",style: TextStyle(
+                    child: Text(""+listQuestion.toString(),style: TextStyle(
                       fontSize: 20,
                     ),),
                   ),
@@ -50,7 +72,9 @@ class _SecondPageState extends State<SecondPage> {
                 onPressed: 
               ()
               {
-
+                setState(() {
+                  getQuestions();
+                });
               }),
             ),
             Padding(
@@ -70,5 +94,14 @@ class _SecondPageState extends State<SecondPage> {
         ),
       ),
     );
+  }
+
+  //Method which will show the Questions
+
+  void getQuestions()
+  {
+    Random random = new Random();
+    int number = random.nextInt(tab.length);
+    listQuestion=list[number].questionn;
   }
 }

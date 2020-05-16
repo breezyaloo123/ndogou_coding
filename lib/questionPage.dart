@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:quizz_covid19/secondPage.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -7,7 +8,8 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
-
+ 
+  
   
   @override
   Widget build(BuildContext context) {
