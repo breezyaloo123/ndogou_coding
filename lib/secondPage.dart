@@ -27,7 +27,7 @@ class _SecondPageState extends State<SecondPage> {
   
 @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     setState(() {
       getQuestions();
@@ -79,7 +79,7 @@ class _SecondPageState extends State<SecondPage> {
               ()
               {
                 setState(() {
-                  num = (num + 1) % tab.length;
+                  
                   getQuestions();
                   checkAnswer(answer1);
                 });
@@ -122,8 +122,10 @@ class _SecondPageState extends State<SecondPage> {
     final bool answerquestion = list[indice].answerr;
     if(answer == answerquestion)
     {
+      num++;
       print("Gooooooood");
       print(list[indice].questionn.toString());
+      print(num);
     }
     else
     {
